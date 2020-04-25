@@ -6,6 +6,7 @@ import warnings
 import calendar
 import random
 import wikipedia
+import pyaudio
 
 warnings.filterwarnings('ignore')
 
@@ -56,4 +57,37 @@ def greeting(text):
 
     return ''
 
-def getTargetWord:
+def getTargetWord(text):
+    wordList = text.lower().split()
+    searchText = ''
+
+    if 'web' in wordList and 'search' in wordList and wordList.index('search') == wordList.index('web')+1:
+        index = wordList.index('search')
+
+        if wordList[index+1] == 'for':
+            index += 1
+
+        for i in range(0, len(wordList)):
+            searchText = searchText + " " + wordList[1+index+i]
+
+        print(">> Word For Web Search : ", searchText)
+
+    return searchText
+
+while True:
+    text = recordAudio()
+    response = ''
+
+    if wakeWord(text) == True:
+        print(">> WAKE WORD Recognised ...")
+
+        response = response + greeting(text)
+
+    if 'web search' in text:
+        searchText = getTargetWord(text)
+
+        wiki = wikipedia.summary(searchText, sentences=3)
+
+        response = response + " " + wiki
+
+    assistantResponse(response)
