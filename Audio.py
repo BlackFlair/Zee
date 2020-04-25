@@ -45,3 +45,15 @@ def wakeWord(text):
             return True
 
     return False
+
+def greeting(text):
+    GREETING_INPUTS = ['hi', 'hey', 'hola', 'hello']
+    GREETING_RESPONSE = 'hello sir.'
+
+    for word in text.split():
+        if word.lower() in GREETING_INPUTS:
+            return GREETING_RESPONSE # random.choice(GREETING_RESPONSE) if GREETING_RESPONSE is a list of strings.
+
+    return ''
+
+def getTargetWord:
