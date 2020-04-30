@@ -6,7 +6,6 @@ import warnings
 import calendar
 import random
 import wikipedia
-import pyaudio
 
 warnings.filterwarnings('ignore')
 
@@ -48,7 +47,7 @@ def wakeWord(text):
     return False
 
 def greeting(text):
-    GREETING_INPUTS = ['hi', 'hey', 'hola', 'hello']
+    GREETING_INPUTS = ['hi zee', 'hey zee', 'hola zee', 'hello zee']
     GREETING_RESPONSE = 'hello sir.'
 
     for word in text.split():
